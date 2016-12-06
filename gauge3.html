@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Gauge demo</title>
+		<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+		<script type="text/javascript" src="gauge.js"></script>
+		<style type="text/css">
+			
+			#parentdiv{
+				width:510px; height:310px; position:relative; margin: auto; display: block; 
+			}	
+		</style>
+
+
+	</head>
+	<body>
+			<h1 align="center">Mo's Bad Ass Website</h1>
+			<div id="parentdiv">
+					<canvas id="test_custom" width="250" height="250"></canvas>
+					<canvas id="test_ryan" width="250" height="250"></canvas>
+			</div>
+		<script type="text/javascript">
+
+			// Helper to execute a function after the window is loaded,
+			// see http://www.google.com/search?q=addLoadEvent
+			function addLoadEvent(func) {
+				var oldonload = window.onload;
+				if (typeof window.onload != 'function') {
+					window.onload = func;
+				} else {
+					window.onload = function() {
+						if (oldonload) {
+							oldonload();
+						}
+						func();
+					}
+				}
+			
+			}
+
+			addLoadEvent( function() {
+				var options, gm, gms, testOverflowMin, testOverflowMax,periodicRand;
+				// Draw the gauge using custom settings
+				options = {
+					value: 70,
+					label: 'Temp',
+					unitsLabel: '' + String.fromCharCode(186),
+					min: 50,
+					max: 120,
+					majorTicks: 8,
+					minorTicks: 1, // small ticks inside each major tick
+					greenFrom: 80,
+					greenTo: 100,
+					yellowFrom: 100,
+					yellowTo: 110,
+					redFrom: 110,
+					redTo: 120
+				};
+				options2 = {
+					value: 60,
+					label: 'Humidity',
+					unitsLabel: '%',
+					min: 50,
+					max: 200,
+					majorTicks: 4,
+					minorTicks: 3, // small ticks inside each major tick
+					greenFrom: 50,
+					greenTo: 75,
+					yellowFrom: 95,
+					yellowTo: 150,
+					redFrom: 150,
+					redTo: 200
+				};
+				new Gauge( document.getElementById( 'test_custom'), options );
+				new Gauge( document.getElementById( 'test_ryan'), options2 );
+
+				
+			} );
+		</script>
+		<table id="ryansTable" align="center">
+			<td>
+				<input type="button" value="Heater 1" onclick=""/> <br/>
+				<input type="button" value="Heater 2" onclick=""/> <br/>
+				<input type="button" value="Humdity 1" onclick=""/> <br/>
+				<input type="button" value="Humidity 2" onclick=""/> <br/>
+				
+				
+			
+			</td>
+			<td align="top">
+				<input type="button" value="Daylight 1" onclick=""/> <br/>
+				<input type="button" value="Daylight 2" onclick=""/> <br/>
+				<input type="button" value="Nightlight" onclick=""/> <br/>
+				<input type="button" value="Fans" onclick=""/> <br/>
+			
+			</td>
+		
+		</table>
+		<form action="" method="post" align="center"> Change Temperature Setpoint: <input type="text" name="temp setting"> <br/>
+						Change Humidity Setpoint: <input type="text" name="hum setting"> <br/>
+						<input type="submit" value="Submit!"> <br/>
+		</form>
+		<script type="text/javascript">
+			function cputemp2(){
+				$.ajax( {
+				type: "POST",
+				url: "cputemp.py",
+				dataType: "html",
+				success: function(msg)
+				{
+					document.getElementById('swiss').innerHTML = msg;
+				},
+				});
+			}
+			</script>
+		<form id="swiss"><input type="button" value="touch me" onclick="cputemp2()"></form>	
+		
+	</body>
+</html>
