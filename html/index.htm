@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+		 <meta charset="utf-8">
+		<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=5.0" />
+		<title>MySQL and Gauge Test</title>
+		<script type="text/javascript" src="/html/global.js"></script>
+		<style type="text/css">
+			.divBorder {
+				border: 2px solid;
+				border-radius: 15px;
+				width: 810px;
+				text-align: center;
+				box-shadow: 6px 6px 3px #888888
+			}
+			
+			 .myRange {
+				border: 2px solid;
+				height: 10px;
+				display: block;
+				margin: 20px;
+				vertical-align: middle;
+				text-align: center;
+				border-radius: 5px;
+				background-color: #444;
+				box-shadow: 6px 6px 3px #888888
+			}
+			
+			#parentdiv{
+				width:510px; height:310px; margin: auto; display: block; 
+			}	
+			#parentdiv2{
+				width:510px; height:310px; margin: auto; display: block; 
+			}
+		</style>
+		
+	</head>
+	
+	<body onload = "process()">
+
+		
+		
+	<h1 align="center">Fish and Lizard Tanks</h1>
+	
+        <div class="divBorder"><table width="800">
+			<h2 align="center">Fish Tank</h2>
+        <tr>
+            <td><canvas id="Canvas0"></canvas></td>
+            <td><canvas id="Canvas1"></canvas></td>
+        </tr>
+        </table>
+        </div>
+        <br/>
+        <div class = "divBorder"><table width="800">
+			<h2 align = "center">Lizard Tank</h2>
+        <tr>
+            <td><canvas id="Canvas2"></canvas></td>
+            <td><canvas id="Canvas3"></canvas></td>
+        </tr>
+    </table></div>
+    <br />
+			
+		
+			
+		<div class="divBorder">
+		<table id="ryansTable" align="center">
+			<td>
+				<input id="Fish Heater 1" type="button" value="Fish Heater 1" onclick="DoCommand('relay1pin', '6')" title="Click to invert output"/> <br/>
+				<input id="Fish Heater 2" type="button" value="Fish Heater 2" onclick="DoCommand('relay2pin', '7')" title="Click to invert output"/> <br/>
+				<input id="Pump 1" type="button" value="Pump 1" onclick="DoCommand('relay3pin', '8')"/> <br/>
+				<input id="Pump 2" type="button" value="Pump 2" onclick="DoCommand('relay4pin', '9')"/> <br/>
+				
+				
+			
+			</td>
+			<td align="top">
+				<input id="Lizard Heater" type="button" value="Lizard Heater" onclick="DoCommand('relay6pin', '10')"/> <br/>
+				<input id="Lizard Daylight 1" type="button" value="Lizard Daylight 1" onclick="DoCommand('relay7pin', '11')"/> <br/>
+				<input id="Lizard Daylight 2" type="button" value="Lizard Daylight 2" onclick="DoCommand('relay8pin', '12')"/> <br/>
+				<input id="Lizard Daylight 3" type="button" value="Lizard Daylight 3" onclick="DoCommand('relay9pin', '13')"/> <br/>
+				<input id="Lizard Daylight LED" type="button" value="Lizard Daylight LED" onclick="DoCommand('relay11pin', '16')"/> <br/>
+				<input id="Lizard Nightlight" type="button" value="Lizard Nightlight" onclick="DoCommand('relay12pin', '15')"/> <br/>
+				<input id="Lizard Tank Fan" type="button" value="Lizard Tank Fan" onclick="DoCommand('fan1pin', '17')"/> <br/>
+			
+			</td>
+		
+		</table>
+		</div>
+
+       <div class="divBorder"><table width="800"><tr>
+            <td class="centerText">White Led</td><td class="centerText">LED outputs</td><td class="centerText">Red Led</td>
+        </tr><tr>
+            <td class="centerText"><div id="Div2"><input id="Range1" class="myRange" type="range" min="0" max="255" step="5" value="128" onchange="updateSlider('0', this.value)" title="Slide to change white led output"/><output id="0">???</output></div></td>
+            <td width="300"></td>
+            <td class="centerText"><div id="Div3"><input id="Range2" class="myRange" type="range" min="0" max="255" step="5" value="128" onchange="updateSlider('1', this.value)" title="Slide to change red led output"/><output id="1">???</output></div></td>
+			</tr>
+			<tr>
+            <td class="centerText">Green Led</td><td class="centerText"></td><td class="centerText">Blue Led</td>
+        </tr>
+			<tr>
+            <td class="centerText"><div id="Div4"><input id="Range3" class="myRange" type="range" min="0" max="255" step="5" value="128" onchange="updateSlider('2', this.value)" title="Slide to change green output"/><output id="2">???</output></div></td>
+            <td width="300"></td>
+            <td class="centerText"><div id="Div5"><input id="Range4" class="myRange" type="range" min="0" max="255" step="5" value="128" onchange="updateSlider('3', this.value)" title="Slide to change blue output"/><output id="3">???</output></div></td>
+        </tr></table></div> 
+	
+	
+	</body>
+
+
+
+
+</html>
+
